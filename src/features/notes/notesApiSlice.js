@@ -25,17 +25,57 @@ export const notesApiSlice = apiSlice.injectEndpoints({
       providesTags: (result, error, arg) => {
         if (result?.ids) {
           return [
-            { type: "Note", id: "LIST" },
-            ...result.ids.map(id => ({ type: "Note", id })),
+            { type: 'Note', id: 'LIST' },
+            ...result.ids.map(id => ({ type: 'Note', id })),
           ];
-        } else return [{ type: "Note", id: "LIST" }];
+        } else return [{ type: 'Note', id: 'LIST' }];
       },
+    }),
+
+    addNewNote: builder.mutation({
+      query: initialNote => ({
+        url: '/notes',
+        method: 'POST',
+        body: {
+          ...initialNote
+        }
+      }),
+      invalidatesTags: [
+        { type: 'Note', id: 'LIST'}
+      ]
+    }),
+
+    updateNote: builder.mutation({
+      query: initialNote => ({
+        url: '/notes',
+        method: 'PATCH',
+        body: {
+          ...initialNote
+        }
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: 'Note', id: arg.id}
+      ]
+    }),
+
+    deleteNote: builder.mutation({
+      query: ({ id }) => ({
+        url: '/notes',
+        method: 'DELETE',
+        body: { id }
+      }),
+      invalidatesTags: (result, error, arg) => [
+        { type: 'Note', id: arg.id }
+      ]
     }),
   }),
 });
 
 export const {
     useGetNotesQuery,
+    useAddNewNoteMutation,
+    useUpdateNoteMutation,
+    useDeleteNoteMutation
 } = notesApiSlice
 
 export const selectNotesResult = notesApiSlice.endpoints.getNotes.select()
