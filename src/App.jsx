@@ -7,7 +7,7 @@ import Welcome from './features/auth/Welcome';
 import UsersList from './features/users/UsersList';
 import NotesList from './features/notes/NotesList';
 import EditUser from './features/users/EditUser';
-import { NewUserForm } from './features/users/NewUserForm';
+import NewUserForm from './features/users/NewUserForm';
 import EditNote from './features/notes/EditNote';  
 import NewNote from './features/notes/NewNote';
 

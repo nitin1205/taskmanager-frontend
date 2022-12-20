@@ -81,7 +81,7 @@ const NewUserForm = () => {
         <>
             <p className={errClass}>{error?.data?.message}</p>
 
-            <from className="form" onSubmit={onSaveUserClicked}>
+            <form className="form" onSubmit={onSaveUserClick}>
                 <div className="form__title-row">
                     <h2>New User</h2>
                     <div className="form_action-buttons">
@@ -133,7 +133,7 @@ const NewUserForm = () => {
                 >
                     {options}
                 </select>
-            </from>
+            </form>
         </>
     )
 
