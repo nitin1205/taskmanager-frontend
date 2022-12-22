@@ -39,13 +39,13 @@ const DashHeader = () => {
     }
 
     const logoutButton = (
-        <buttom 
+        <button 
             className="icon-button"
             title="Logout"
             onClick={onLogoutClick}
         >
             <FontAwesomeIcon icon={faRightFromBracket} />
-        </buttom>
+        </button>
     )
 
     const content = (

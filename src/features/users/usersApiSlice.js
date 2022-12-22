@@ -79,19 +79,15 @@ export const {
     useDeleteUserMutation
 } = usersApiSlice
 
-
 export const selectUsersResult = usersApiSlice.endpoints.getUsers.select()
-
 
 const selectUsersData = createSelector(
     selectUsersResult,
     usersResult => usersResult.data 
 )
 
-
 export const {
     selectAll: selectAllUsers,
     selectById: selectUserById,
-    selectIds: selectUserIds
-    
+    selectIds: selectUserIds    
 } = usersAdapter.getSelectors(state => selectUsersData(state) ?? initialState)
